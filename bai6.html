@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout 4 - CSS Grid</title>
+    <style>
+        /* Reset margin và font cho toàn bộ trang
+         * margin: 0 - loại bỏ khoảng cách mặc định của body
+         * font-family - sử dụng font Arial, nếu không có sẽ dùng font sans-serif */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Định dạng phần header
+         * background-color: màu nền xám (#6c757d)
+         * color: màu chữ trắng
+         * text-align: center - căn giữa nội dung
+         * padding: 20px 0 - thêm khoảng cách 20px trên dưới, 0 trái phải */
+        header {
+            background-color: #6c757d;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Định dạng thanh điều hướng
+         * background-color: màu nền tối (#343a40)
+         * color: màu chữ trắng
+         * text-align: center - căn giữa nội dung
+         * padding: 15px 0 - thêm khoảng cách 15px trên dưới */
+        nav {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        /* Thiết lập CSS Grid cho container chính
+         * display: grid - kích hoạt layout grid
+         * grid-template-columns: tạo 4 cột bằng nhau (1fr = 1 phần)
+         * gap: khoảng cách 15px giữa các phần tử grid
+         * padding: thêm khoảng cách 20px xung quanh container */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Có thể viết: 1fr 1fr 1fr 1fr */
+            gap: 15px;
+            padding: 20px;
+        }
+
+        /* Định dạng cho từng box trong grid
+         * background-color: màu nền xám nhạt (#f8f9fa)
+         * border: viền 1px màu xám nhạt (#ddd)
+         * padding: khoảng cách 20px từ nội dung đến viền
+         * text-align: center - căn giữa nội dung
+         * border-radius: bo tròn góc 8px
+         * box-shadow: tạo bóng đổ
+         *    - 0: độ dịch chuyển ngang
+         *    - 2px: độ dịch chuyển dọc
+         *    - 5px: độ mờ
+         *    - rgba(0,0,0,0.1): màu đen với độ trong suốt 10% */
+        .box {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Định dạng phần footer
+         * background-color: màu nền xám (#c0c0c0)
+         * text-align: center - căn giữa nội dung
+         * padding: 10px 0 - thêm khoảng cách 10px trên dưới */
+        footer {
+            background-color: #c0c0c0;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Logo</h1>
+    </header>
+    <nav>
+        <h2>Navigation</h2>
+    </nav>
+    <div class="container">
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+        <div class="box">Box 3</div>
+        <div class="box">Box 4</div>
+        <div class="box">Box 5</div>
+        <div class="box">Box 6</div>
+        <div class="box">Box 7</div>
+        <div class="box">Box 8</div>
+    </div>
+    <footer>
+        <h3>Footer</h3>
+    </footer>
+</body>
+</html>
