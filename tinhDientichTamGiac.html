@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tính diện tích của tam giác</title>
+        <script>
+        function tinhToan() {
+            var canh1 = parseFloat(document.getElementById("canh1").value);
+            var canh2 = parseFloat(document.getElementById("canh2").value);
+            var canh3 = parseFloat(document.getElementById("canh3").value);
+            var p = (canh1 + canh2 + canh3) / 2;
+            var s = Math.sqrt(p * (p - canh1) * (p - canh2) * (p - canh3));
+            document.getElementById("ketqua").innerHTML = "Diện tích của tam giác là: " + s;
+        }
+        </script>
+    </head>
+    <body>
+        <form>
+            <label for="canh1">Cạnh thứ nhất</label><br>
+            <input type="text" id="canh1" name="canh1" required><br>
+            <label for="canh2">Cạnh thứ hai</label><br>
+            <input type="text" id="canh2" name="canh2" required><br>
+            <label for="canh3">Cạnh thứ ba</label><br>
+            <input type="text" id="canh3" name="canh3" required><br>
+            <button onclick="tinhToan()">Tính</button>
+            <p id="ketqua"></p>
+        </form>
+    </body>
+</html>

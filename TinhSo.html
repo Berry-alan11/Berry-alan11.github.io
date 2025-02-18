@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tính Hai Số</title>
+    </head>
+    <body>
+        <form>
+            <label for="so1">Số Thứ Nhất:</label><br>
+            <input type="number" id="so1" name="so1" required><br>
+            <label for="so2">Số Thứ Hai:</label><br>
+            <input type="number" id="so2" name="so2" required><br>
+            <button type="button" onclick="maytinh('cong')">Cộng</button>
+            <button type="button" onclick="maytinh('tru')">Trừ</button>
+            <button type="button" onclick="maytinh('nhan')">Nhân</button>
+            <button type="button" onclick="maytinh('chia')">Chia</button>
+        </form>
+        <p id="ketqua"></p>
+
+        <script>
+            function maytinh(pheptinh) {
+                const so1 = parseFloat(document.getElementById("so1").value);
+                const so2 = parseFloat(document.getElementById("so2").value);
+                let ketqua;
+                switch (pheptinh) {
+                    case 'cong':
+                        ketqua = so1 + so2;
+                        break;
+                    case 'tru':
+                        ketqua = so1 - so2;
+                        break;
+                    case 'nhan':
+                        ketqua = so1 * so2;
+                        break;
+                    case 'chia':
+                        ketqua = so1 / so2;
+                        break;
+                    default:
+                        break;
+                }
+                document.getElementById("ketqua").innerHTML = "Kết quả: " + ketqua;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tính Can Chi</title>
+    </head>
+    <body>
+        <h1>Tính năm âm lịch theo Can Chi</h1>
+        <label for="yearInput">Nhập năm dương lịch:</label>
+        <input type="number" id="yearInput" placeholder="VD: 2024">
+        <button onclick="calculateCanChi()">Tính</button>
+
+        <p id="result"></p>
+
+        <script>
+        function calculateCanChi() {
+            const canList = ["Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"];
+            const chiList = ["Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"];
+
+            // Lấy giá trị từ input
+            const year = parseInt(document.getElementById("yearInput").value);
+
+            if (isNaN(year) || year <= 0) {
+                document.getElementById("result").innerText = "Vui lòng nhập một năm hợp lệ!";
+                return;
+            }
+
+            // Tính chỉ số Can và Chi
+            const canIndex = (year + 6) % 10;
+            const chiIndex = (year + 8) % 12;
+
+            // Lấy Can và Chi từ danh sách
+            const can = canList[canIndex];
+            const chi = chiList[chiIndex];
+
+            // Hiển thị kết quả
+            document.getElementById("result").innerText = `Năm ${year} là năm ${can} ${chi}`;
+        }
+    </script>
+    </body>
+</html>

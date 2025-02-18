@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tính toán phân số</title>
+    </head>
+    <body>
+        <form>
+            <!-- Phân số thứ nhất -->
+            <label>Phân số 1:</label>
+            <input type="number" id="tu1" placeholder="Tử số" required>
+            /
+            <input type="number" id="mau1" placeholder="Mẫu số" required>
+            <br>
+
+            <!-- Phân số thứ hai -->
+            <label>Phân số 2:</label>
+            <input type="number" id="tu2" placeholder="Tử số" required>
+            /
+            <input type="number" id="mau2" placeholder="Mẫu số" required>
+            <br>
+
+            <!-- Các nút thực hiện phép toán -->
+            <button type="button" onclick="tinhToan('cong')">Tổng</button>
+            <!-- Sửa tên hàm -->
+            <button type="button" onclick="tinhToan('tru')">Hiệu</button>
+            <button type="button" onclick="tinhToan('nhan')">Tích</button>
+            <button type="button" onclick="tinhToan('chia')">Thương</button>
+        </form>
+
+        <!-- Sửa id thành ketQua không dấu cách -->
+        <p id="ketQua"></p>
+
+        <script>
+        function tinhToan(phepToan) {
+            // Lấy giá trị từ các ô nhập
+            const tu1 = parseInt(document.getElementById('tu1').value);
+            const mau1 = parseInt(document.getElementById('mau1').value);
+            const tu2 = parseInt(document.getElementById('tu2').value);
+            const mau2 = parseInt(document.getElementById('mau2').value);
+        
+            // Kiểm tra hợp lệ
+            if (isNaN(tu1) || isNaN(mau1) || isNaN(tu2) || isNaN(mau2)) {
+                alert("Vui long nhap day du cac truong!");
+                return;
+            }
+            
+            if (mau1 === 0 || mau2 === 0) {
+                alert("Mau so khong the bang 0!");
+                return;
+            }
+        
+            // Tính toán
+            let tuKetQua, mauKetQua;
+            
+            switch(phepToan) {
+                case 'cong': 
+                    tuKetQua = tu1 * mau2 + tu2 * mau1;
+                    mauKetQua = mau1 * mau2;
+                    break;
+                case 'tru':
+                    tuKetQua = tu1 * mau2 - tu2 * mau1;
+                    mauKetQua = mau1 * mau2;
+                    break;
+                case 'nhan':
+                    tuKetQua = tu1 * tu2;
+                    mauKetQua = mau1 * mau2;
+                    break;
+                case 'chia':
+                    if (tu2 === 0) {
+                        alert("Khong the chia cho phan so 0!");
+                        return;
+                    }
+                    tuKetQua = tu1 * mau2;
+                    mauKetQua = mau1 * tu2;
+                    break;
+                default:
+                    alert("Phep toan khong hop le!");
+                    return;
+            }
+        
+            // Rút gọn phân số
+            const ucln = timUCLN(Math.abs(tuKetQua), Math.abs(mauKetQua));
+            let tuRutGon = tuKetQua / ucln;
+            let mauRutGon = mauKetQua / ucln;
+        
+            // Xử lý dấu mẫu số
+            if (mauRutGon < 0) {
+                tuRutGon *= -1;
+                mauRutGon *= -1;
+            }
+        
+            // Hiển thị kết quả - sửa lại id ketQua
+            const ketQua = document.getElementById('ketQua');
+            if (mauRutGon === 1) {
+                ketQua.innerHTML = `Ket qua: ${tuRutGon}`;
+            } else {
+                ketQua.innerHTML = `Ket qua: ${tuRutGon}/${mauRutGon}`;
+            }
+        }
+        
+        // Hàm tìm ước chung lớn nhất
+        function timUCLN(a, b) {
+            return b === 0 ? a : timUCLN(b, a % b);
+        }
+    </script>
+    </body>
+</html>
