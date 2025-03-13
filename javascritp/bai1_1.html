@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thông tin người dùng</title>
+  <script src="script.js"></script>
+</head>
+<body>
+  <h2>Nhập thông tin người dùng</h2>
+  <form id="userForm">
+    <label for="username">Tên của bạn:</label>
+    <input type="text" id="username" placeholder="Nhập tên của bạn">
+    <br>
+    <label for="useraddress">Nhập địa chỉ của bạn:</label>
+    <input type="text" id="useraddress" placeholder="Nhập địa chỉ của bạn">
+    <br>
+    <button type="button" id="saveButton">Lưu thông tin</button>
+  </form>
+
+  <table border="1" id="userTable">
+    <caption><h2>Thông tin người dùng đã nhập</h2></caption>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Tên người dùng</th>
+        <th>Địa chỉ</th>
+        <th>Dữ liệu JSON</th>
+        <th>Xóa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Dữ liệu sẽ được lưu ở đây -->
+    </tbody>
+  </table>
+
+  <h2>Xóa Người Dùng</h2>
+  <!-- Tạo form xóa với id riêng -->
+  <form id="deleteForm">
+    <label for="delete">Nhập STT cần xóa:</label>
+    <input type="number" id="delete" placeholder="Nhập số thứ tự cần xóa">
+    <br>
+    <button type="button" id="deleteButton">Xóa người dùng</button>
+  </form>
+</body>
+</html>

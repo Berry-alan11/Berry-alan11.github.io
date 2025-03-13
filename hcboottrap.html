@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ví dụ Hệ Thống Lưới Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .my-box {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Hệ Thống Lưới Bootstrap</h1>
+        <p>Ví dụ về cách sử dụng hệ thống lưới responsive.</p>
+
+        <div class="row">
+            <div class="col-md-4 my-box">
+                Cột 1 <br>
+                (col-md-4)
+            </div>
+            <div class="col-md-4 my-box">
+                Cột 2 <br>
+                (col-md-4)
+            </div>
+            <div class="col-md-4 my-box">
+                Cột 3 <br>
+                (col-md-4)
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-3 my-box">
+                Cột 1 <br>
+                (col-sm-6 col-md-3)
+            </div>
+            <div class="col-sm-6 col-md-3 my-box">
+                Cột 2 <br>
+                (col-sm-6 col-md-3)
+            </div>
+            <div class="col-sm-6 col-md-3 my-box">
+                Cột 3 <br>
+                (col-sm-6 col-md-3)
+            </div>
+            <div class="col-sm-6 col-md-3 my-box">
+                Cột 4 <br>
+                (col-sm-6 col-md-3)
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">   qr             <div class="col-lg-6 my-box">
+                Cột 1 <br>
+                (col-lg-6) - Chiếm 1/2 chiều rộng trên màn hình lớn (lg) trở lên
+            </div>
+            <div class="col-lg-6 my-box">
+                Cột 2 <br>
+                (col-lg-6) - Chiếm 1/2 chiều rộng trên màn hình lớn (lg) trở lên
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-12 my-box">
+                Cột 1 <br>
+                (col-12) - Chiếm toàn bộ chiều rộng trên mọi kích thước màn hình
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-4 col-md-3 col-lg-2 my-box">
+                Cột 1 <br>
+                (col-sm-4 col-md-3 col-lg-2) - Thay đổi kích thước theo breakpoint
+            </div>
+            <div class="col-sm-8 col-md-9 col-lg-10 my-box">
+                Cột 2 <br>
+                (col-sm-8 col-md-9 col-lg-10) - Thay đổi kích thước theo breakpoint
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-6 col-md-3 offset-md-3 my-box">
+                Cột 1 <br>
+                (col-6 col-md-3 offset-md-3) - Offset
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6 order-md-2 my-box">
+                Cột 1 <br>
+                (col-md-6 order-md-2) - Order
+            </div>
+            <div class="col-md-6 order-md-1 my-box">
+                Cột 2 <br>
+                (col-md-6 order-md-1) - Order
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-6 my-box">
+                        Cột lồng ghép 1 (col-6)
+                    </div>
+                    <div class="col-6 my-box">
+                        Cột lồng ghép 2 (col-6)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 my-box">
+                Cột chính 2 (col-md-8)
+            </div>
+        </div>
+        <hr>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>  

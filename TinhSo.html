@@ -7,10 +7,14 @@
     </head>
     <body>
         <form>
+            <h3>Nhập số mà bạn mong muốn</h3>
             <label for="so1">Số Thứ Nhất:</label><br>
             <input type="number" id="so1" name="so1" required><br>
             <label for="so2">Số Thứ Hai:</label><br>
             <input type="number" id="so2" name="so2" required><br>
+
+            <hr>
+            <h3>Chọn phép tính</h3>
             <button type="button" onclick="maytinh('cong')">Cộng</button>
             <button type="button" onclick="maytinh('tru')">Trừ</button>
             <button type="button" onclick="maytinh('nhan')">Nhân</button>
@@ -26,7 +30,7 @@
                 switch (pheptinh) {
                     case 'cong':
                         ketqua = so1 + so2;
-                        break;
+                       break;
                     case 'tru':
                         ketqua = so1 - so2;
                         break;

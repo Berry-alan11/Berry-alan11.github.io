@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="bai2.js"></script>
+    <h1>Khảo sát đánh giá giảng viên</h1>
+    <form>
+        <label for="monHoc">Tên môn học</label>
+        <input type="text" name="tenMonHoc" id="tenMonHoc">
+        <br>
+        <label for="giangVien">Tên giảng viên</label>
+        <input type="text" name="tenGiangVien" id="tenGiangVien">
+        <br>    
+        <label for="sinhVien">Họ tên sinh viên</label>
+        <input type="text" name="hoTenSinhVien" id="hoTenSinhVien">
+        <br>
+        <label for="time">Ngày giờ gửi form:</label>
+        <span id="submitTime"></span><br><br>
+    </form>
+    <table border="1" id="surveyTable">
+        <thead>
+            <tr>
+                <th>Tiêu chí</th>
+                <th>1 (Rất kém)</th>
+                <th>2 (Kém)</th>
+                <th>3 (Trung Bình)</th>
+                <th>4 (Tốt)</th>
+                <th>5 (Rất tốt)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Khả năng truyền đạt</td>
+                <td><input type="radio" name="1" value="1"></td>
+                <td><input type="radio" name="1" value="2"></td>
+                <td><input type="radio" name="1" value="3"></td>
+                <td><input type="radio" name="1" value="4"></td>
+                <td><input type="radio" name="1" value="5"></td>
+            </tr>
+            <tr>
+                <td>Thái độ giảng viên</td>
+                <td><input type="radio" name="2" value="1"></td>
+                <td><input type="radio" name="2" value="2"></td>
+                <td><input type="radio" name="2" value="3"></td>
+                <td><input type="radio" name="2" value="4"></td>
+                <td><input type="radio" name="2" value="5"></td>
+            </tr>
+            <tr>
+                <td>Sự tương tác với sinh viên</td>
+                <td><input type="radio" name="3" value="1"></td>
+                <td><input type="radio" name="3" value="2"></td>
+                <td><input type="radio" name="3" value="3"></td>
+                <td><input type="radio" name="3" value="4"></td>
+                <td><input type="radio" name="3" value="5"></td>
+            </tr>
+            <tr>
+                <td>Kiến thức chuyên môn</td>
+                <td><input type="radio" name="4" value="1"></td>
+                <td><input type="radio" name="4" value="2"></td>
+                <td><input type="radio" name="4" value="3"></td>
+                <td><input type="radio" name="4" value="4"></td>
+                <td><input type="radio" name="4" value="5"></td>
+            </tr>
+            <tr>
+                <td>Tổ chức bài giảng</td>
+                <td><input type="radio" name="5" value="1"></td>
+                <td><input type="radio" name="5" value="2"></td>
+                <td><input type="radio" name="5" value="3"></td>
+                <td><input type="radio" name="5" value="4"></td>
+                <td><input type="radio" name="5" value="5"></td>
+            </tr>
+            <tr>
+                <td>Khả năng giải đáp thắc mắc</td>
+                <td><input type="radio" name="6" value="1"></td>
+                <td><input type="radio" name="6" value="2"></td>
+                <td><input type="radio" name="6" value="3"></td>
+                <td><input type="radio" name="6" value="4"></td>
+                <td><input type="radio" name="6" value="5"></td>
+            </tr>
+            <tr>
+                <td>Sự nhiệt tình</td>
+                <td><input type="radio" name="7" value="1"></td>
+                <td><input type="radio" name="7" value="2"></td>
+                <td><input type="radio" name="7" value="3"></td>
+                <td><input type="radio" name="7" value="4"></td>
+                <td><input type="radio" name="7" value="5"></td>
+            </tr> 
+            <tr>
+                <td>Thời gian giảng dạy phù hợp</td>
+                <td><input type="radio" name="8" value="1"></td>
+                <td><input type="radio" name="8" value="2"></td>
+                <td><input type="radio" name="8" value="3"></td>
+                <td><input type="radio" name="8" value="4"></td>
+                <td><input type="radio" name="8" value="5"></td>
+            </tr>
+            <tr>
+                <td>Thái độ đối với câu hỏi của sinh viên</td>
+                <td><input type="radio" name="9" value="1"></td>
+                <td><input type="radio" name="9" value="2"></td>
+                <td><input type="radio" name="9" value="3"></td>
+                <td><input type="radio" name="9" value="4"></td>
+                <td><input type="radio" name="9" value="5"></td>
+            </tr>
+            <tr>
+                <td>Ứng dụng công nghệ trong giảng dạy</td>
+                <td><input type="radio" name="10" value="1"></td>
+                <td><input type="radio" name="10" value="2"></td>
+                <td><input type="radio" name="10" value="3"></td>
+                <td><input type="radio" name="10" value="4"></td>
+                <td><input type="radio" name="10" value="5"></td>
+            </tr>
+            <tr>
+                <td>Khả năng khuyến khích tư duy sáng tạo</td>
+                <td><input type="radio" name="11" value="1"></td>
+                <td><input type="radio" name="11" value="2"></td>
+                <td><input type="radio" name="11" value="3"></td>
+                <td><input type="radio" name="11" value="4"></td>
+                <td><input type="radio" name="11" value="5"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <h1 id="soDiem"></h1>
+    <button type="button" onclick="submitForm()">Gửi Khảo Sát</button>
+    <p id="jsonData"></p>
+</body>
+</html> 
