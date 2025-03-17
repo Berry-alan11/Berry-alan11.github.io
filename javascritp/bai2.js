@@ -12,46 +12,49 @@ window.onload = function () {
 };
 // hàm thu thập dữ liệu từ các ô nhập liệu 
 function submitForm() {
-    // Bước 1: Thu thập thông tin từ các ô nhập liệu
+    // Bước 1: Thu thập thông tin từ các ô nhập liệu và submitTime
     let tenMonHoc = document.getElementById("tenMonHoc").value;
     let tenGiangVien = document.getElementById("tenGiangVien").value;
     let hoTenSinhVien = document.getElementById("hoTenSinhVien").value;
+    let submitTime = document.getElementById("submitTime").innerText;
 
-    // Kiểm tra xem các ô nhập liệu có trống không
+    // Kiểm tra các ô nhập liệu có rỗng không
     if (tenMonHoc === "" || tenGiangVien === "" || hoTenSinhVien === "") {
         alert("Vui lòng điền đầy đủ thông tin: Tên môn học, Tên giảng viên, Họ tên sinh viên!");
-        return; // Dừng lại nếu thiếu thông tin
+        return;
     }
-    // Bước 2: Thu thập giá trị từ các radio buttons đã chọn
-    let selectedRadios = document.querySelectorAll('input[type="radio"]:checked');
-    let totalScore = 0; // Tổng điểm
-    let numberOfCriteria = selectedRadios.length; // Số tiêu chí đã chọn
 
-    // Kiểm tra xem có chọn đủ 11 tiêu chí chưa
-    if (numberOfCriteria < 11) {
-        alert("Vui lòng chọn đầy đủ 11 tiêu chí khảo sát!");
-        return; // Dừng lại nếu thiếu tiêu chí
-    }
-    // Tính tổng điểm từ các radio buttons đã chọn
-    selectedRadios.forEach(function (radio) {
-        totalScore += parseInt(radio.value);
-    });
-    // tính điểm trung bình 
-    let averageScore = totalScore / numberOfCriteria;
-
-    // Lấy danh sách các checkbox đã chọn
-    let checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    // Bước 2: Thu thập dữ liệu từ các radio button (11 tiêu chí)
+    // tạo một đối tượng rỗng có tên criteria để lưu trữ điểm số từng tiêu chí
     let criteria = {};
+    let totalScore = 0;
+    for (let i = 1; i <= 11; i++) {
+        // Lấy radio button đã được chọn cho tiêu chí thứ i
+        let radio = document.querySelector('input[name="' + i + '"]:checked');
+        if (!radio) {
+            alert("Vui lòng chọn đầy đủ 11 tiêu chí khảo sát!");
+            return;
+        }
+        criteria[`Tiêu Chí ${i}`] = radio.value;
+        totalScore += parseInt(radio.value);
+    }
+    let averageScore = totalScore / 11;
 
-    // Duyệt qua các checkbox và thêm vào đối tượng JSON
-    checkboxes.forEach((checkbox, index) => {
-        criteria[`Tiêu chí ${index + 1}`] = checkbox.value;
-    })
+    // Bước 3: Tạo đối tượng JSON theo cấu trúc mong muốn
+    let surveyData = {
+        "tenMonhoc": tenMonHoc,
+        "tenGiangVien": tenGiangVien,
+        "tenSinhVien": hoTenSinhVien,
+        "submitTime": submitTime,
+        "criteria": criteria
+    };
 
-    // Bước 3: Hiển thị kết quả lên trang web   
+    // Chuyển đối tượng thành chuỗi JSON
+    let jsonString = JSON.stringify(surveyData, null, 2);
+
+    // Hiển thị kết quả JSON bên dưới nút "Gửi Khảo Sát"
+    document.getElementById("jsonData").innerText = jsonString;
+    // Hiển thị điểm trung bình (nếu cần)
     document.getElementById("soDiem").innerText = "Điểm trung bình của giảng viên: " + averageScore.toFixed(2);
-
-    // hàm thu thập dữ liệu check box 
-    let criteriaList = document.getElementById("criteriaList");
 }
 

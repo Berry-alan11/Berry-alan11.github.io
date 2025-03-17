@@ -42,65 +42,68 @@ function saveUserInfo() {
     cell3.innerHTML = useraddress;
     cell4.innerHTML = userInfoJSON;
     cell5.innerHTML = `<input type="checkbox" class="deleteCheckbox" onchange="toggleDeleteInput()">`;
+    // thêm sự kiện vào checkbox
+    const checkbox = cell5.querySelector(".deleteCheckbox");
+    checkbox.addEventListener("change", toggleDeleteInput);
   }
-// hàm tự động disable nút xóa khi không có checkbox nào được chọn
- function toggleDeleteInput(){
-  const deleteInput = document.getElementById("delete");
-  const deleteCheckbox = document.getElementsByClassName("deleteCheckbox").length>0;
-  deleteInput.disabled = anyChecked;
- }
-// Hàm xóa người dùng theo yêu cầu:
-// - Nếu có checkbox được chọn: xóa theo checkbox (ưu tiên)
-// - Nếu không checkbox nào được chọn: xóa theo STT nhập vào
+// Hàm xóa người dùng dựa trên checkbox hoặc STT
 function deleteUser() {
-  const checkedBoxes = document.querySelectorAll(".deleteCheckbox:checked");
-  const tableBody = document.getElementById("userTable").getElementsByTagName("tbody")[0];
+  const checkboxes = document.querySelectorAll(".deleteCheckbox");
+  const table = document.getElementById("userTable").getElementsByTagName("tbody")[0];
+  let anyChecked = false;
 
-  if (checkedBoxes.length > 0) {
-    // Xóa các dòng được chọn bằng checkbox
-    checkedBoxes.forEach(function(checkbox) {
-      const row = checkbox.parentElement.parentElement;
-      row.remove();
-    });
-  } else {
-    // Xóa theo STT nhập vào
-    let deleteIndex = document.getElementById("delete").value;
-    deleteIndex = parseInt(deleteIndex);
-    if (isNaN(deleteIndex) || deleteIndex < 1) {
-      alert("Vui lòng nhập số thứ tự hợp lệ để xóa.");
+  // Duyệt qua các checkbox từ cuối danh sách về đầu để xóa nhiều hàng mà không bị lỗi
+  for (let i = checkboxes.length - 1; i >= 0; i--) {
+    if (checkboxes[i].checked) {
+      anyChecked = true;
+      table.deleteRow(i);
+      userIndex--;
+
+      //Gọi hàm delete ở PHP 
+    }
+  }
+
+  // Nếu không có checkbox nào được chọn, xóa theo STT
+  if (!anyChecked) {
+    const deleteIndex = document.getElementById("deleteIndex").value;
+
+    if (deleteIndex.trim() === "" || isNaN(deleteIndex) || deleteIndex <= 0 || deleteIndex > userIndex) {
+      alert("Vui lòng nhập chỉ số hợp lệ.");
       return;
     }
-    let rows = tableBody.rows;
-    let found = false;
-    for (let i = 0; i < rows.length; i++) {
-      let stt = parseInt(rows[i].cells[0].innerText);
-      if (stt === deleteIndex) {
-        rows[i].remove();
-        found = true;
-        break;
-      }
-    }
-    if (!found) {
-      alert("Không tìm thấy người dùng với STT đã nhập.");
-    }
+
+    table.deleteRow(deleteIndex - 1);
+
+    // Gọi hàm delete ở PHP
+    userIndex--;
   }
-  // Cập nhật lại số thứ tự (STT)
-  updateSTT();
-  // Xóa nội dung ô nhập STT sau khi xóa
-  document.getElementById("delete").value = "";
-  // Cập nhật trạng thái disable của input xóa
-  toggleDeleteInput();
+
+  updateRowIndexes(); // Cập nhật lại STT sau khi xóa
+  toggleDeleteInput(); // Cập nhật trạng thái trường nhập STT
 }
 
-// Hàm cập nhật lại số thứ tự cho các dòng trong bảng
-function updateSTT() {
-  const tableBody = document.getElementById("userTable").getElementsByTagName("tbody")[0];
-  const rows = tableBody.rows;
-  userIndex = 0;
-  for (let i = 0; i < rows.length; i++) {
-    userIndex++;
-    rows[i].cells[0].innerText = userIndex;
+// Cập nhật lại STT sau khi xóa
+function updateRowIndexes() {
+  const table = document.getElementById("userTable").getElementsByTagName("tbody")[0];
+  for (let i = 0; i < table.rows.length; i++) {
+    table.rows[i].cells[0].innerHTML = i + 1;
   }
+}
+
+// Hàm kiểm tra xem có checkbox nào được chọn hay không và vô hiệu hóa
+function toggleDeleteInput() {
+  //Chú ý: Lấy tất cả check box thuộc class delete checkbox
+  const checkboxes = document.querySelectorAll(".deleteCheckbox");
+  let anyChecked = false;
+
+  checkboxes.forEach(function(checkbox)
+ {
+    if (checkbox.checked) {
+      anyChecked = true;  
+    }
+  });
+
+  document.getElementById("deleteIndex").disabled = anyChecked;
 }
 
 // Gắn sự kiện vào nút Lưu và nút Xóa khi DOM đã sẵn sàng
